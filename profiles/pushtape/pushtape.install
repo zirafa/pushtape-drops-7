@@ -1,0 +1,253 @@
+<?php
+/**
+* Implement hook_install().
+*
+* Perform actions to set up the site for this profile.
+*/
+function pushtape_install() {  
+  // Enable themes
+  theme_enable(array('seven', 'flux'));
+  variable_set('admin_theme', 'flux');
+  variable_set('theme_default', 'flux');
+  variable_set('site_frontpage', 'releases');
+  variable_set('pathauto_node_pattern', '[node:title]');
+  variable_set('pathauto_node_album_pattern', 'release/[node:title]');
+  variable_set('pathauto_node_track_pattern', 'track/[node:title]');
+  variable_set('pathauto_node_news_pattern', 'news/[node:title]');
+  variable_set('pathauto_node_event_pattern', 'event/[node:title]');
+  variable_set('pathauto_node_photo_pattern', 'photo/[node:title]');
+  // variable_set('clean_url', 1);
+  //variable_set('site_footer', 'Built with Pushtape');
+  variable_set('node_admin_theme', '1');  
+  
+  // Default "Basic page" to not be promoted and have comments disabled.
+  variable_set('node_options_page', array('status'));
+  variable_set('node_options_track', array('status'));
+  variable_set('node_options_album', array('status'));
+  variable_set('comment_page', COMMENT_NODE_HIDDEN);
+  variable_set('comment_track', COMMENT_NODE_HIDDEN);
+  variable_set('comment_album', COMMENT_NODE_HIDDEN);
+  variable_set('node_preview_page', 0);
+  variable_set('node_preview_track', 0);
+  variable_set('node_preview_album', 0);
+
+  // Default dates
+  variable_set('date_format_short', 'F j, Y'); 
+  variable_set('date_format_medium', 'M j, Y'); 
+  variable_set('date_format_long', 'n/j/Y'); 
+
+  // Don't display date and author information for "Basic page" nodes by default.
+  variable_set('node_submitted_page', FALSE);
+  variable_set('node_submitted_track', FALSE);
+  variable_set('node_submitted_album', FALSE);
+  variable_set('node_submitted_event', FALSE);
+
+  // Enable user picture support and set the default to a square thumbnail option.
+  variable_set('user_pictures', '1');
+  variable_set('user_picture_dimensions', '1024x1024');
+  variable_set('user_picture_file_size', '800');
+  variable_set('user_picture_style', 'thumbnail');
+
+  // Allow visitor account creation with administrative approval.
+  variable_set('user_register', USER_REGISTER_ADMINISTRATORS_ONLY);
+  
+  // Disable secondary menu link source.
+  variable_set('menu_secondary_links_source', '');
+  
+  /**
+   * Some input formats
+   */
+   $filtered_html_format = array(
+    'format' => 'filtered_html', 
+    'name' => 'Filtered HTML', 
+    'weight' => 0, 
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0, 
+        'status' => 1,
+      ),
+      // HTML filter. 
+      'filter_html' => array(
+        'weight' => 1, 
+        'status' => 1,
+      ),
+      // Line break filter. 
+      'filter_autop' => array(
+        'weight' => 2, 
+        'status' => 1,
+      ),
+      // HTML corrector filter. 
+      'filter_htmlcorrector' => array(
+        'weight' => 10, 
+        'status' => 1,
+      ),
+    ),
+  );
+  $filtered_html_format = (object) $filtered_html_format;
+  filter_format_save($filtered_html_format);
+
+  $full_html_format = array(
+    'format' => 'full_html', 
+    'name' => 'Full HTML', 
+    'weight' => 1, 
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0, 
+        'status' => 1,
+      ),
+      // Line break filter. 
+      'filter_autop' => array(
+        'weight' => 1, 
+        'status' => 1,
+      ),
+      // HTML corrector filter. 
+      'filter_htmlcorrector' => array(
+        'weight' => 10, 
+        'status' => 1,
+      ),
+    ),
+  );
+  $full_html_format = (object) $full_html_format;
+  filter_format_save($full_html_format);
+  
+  // Enable some standard blocks.
+  $default_theme = 'flux';
+  $values = array(
+    array(
+      'module' => 'system', 
+      'delta' => 'main', 
+      'theme' => $default_theme, 
+      'status' => 1, 
+      'weight' => 0, 
+      'region' => 'content',
+      'visibility' => 0,        
+      'pages' => '', 
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system', 
+      'delta' => 'help', 
+      'theme' => $default_theme, 
+      'status' => 1, 
+      'weight' => 0, 
+      'region' => 'help',
+      'visibility' => 0,        
+      'pages' => '', 
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'menu', 
+      'delta' => 'menu-pushtape', 
+      'theme' => $default_theme, 
+      'status' => 1, 
+      'weight' => 0, 
+      'region' => 'top',
+      'visibility' => 0,        
+      'pages' => '', 
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'views', 
+      'delta' => 'events-block_1', 
+      'theme' => $default_theme, 
+      'status' => 1, 
+      'weight' => 10, 
+      'region' => 'content',
+      'visibility' => 1,     
+      'pages' => 'shows', 
+      'cache' => -1,
+    ),    
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();   
+}
+
+
+/**
+ * Implements hook_install_tasks().
+ */
+function pushtape_install_tasks() {
+
+     // Remove any status messages that might have been set. They are unneeded.
+  drupal_get_messages('status', TRUE);
+}
+
+/**
+ * Implements hook_install_tasks_alter().
+ */
+function pushtape_install_tasks_alter(&$tasks, $install_state) {
+
+  // These first two pages will depend on Drupal 7.19 exclusive flag
+  $tasks['install_select_profile']['display'] = FALSE;
+  $tasks['install_select_locale']['display'] = FALSE;
+  $tasks['install_select_locale']['run'] = INSTALL_TASK_SKIP;
+
+  // The "Welcome" screen needs to come after the first two steps
+  // (profile and language selection), despite the fact that they are disabled.
+  $new_task['install_welcome'] = array(
+    'display' => TRUE,
+    'display_name' => st('Welcome'),
+    'type' => 'form',
+    'run' => isset($install_state['parameters']['welcome']) ? INSTALL_TASK_SKIP : INSTALL_TASK_RUN_IF_REACHED,
+  );
+  $old_tasks = $tasks;
+  $tasks = array_slice($old_tasks, 0, 2) + $new_task + array_slice($old_tasks, 2);
+
+  _pushtape_set_theme('flux');
+}
+
+
+/**
+ * Force-set a theme at any point during the execution of the request.
+ *
+ * Drupal doesn't give us the option to set the theme during the installation
+ * process and forces enable the maintenance theme too early in the request
+ * for us to modify it in a clean way.
+ */
+function _pushtape_set_theme($target_theme) {
+  //print '<pre>';print_r($GLOBALS);print '</pre>';
+  if ($GLOBALS['theme'] != $target_theme) {
+    unset($GLOBALS['theme']);
+    drupal_static_reset();
+    $GLOBALS['conf']['maintenance_theme'] = $target_theme;
+    $GLOBALS['conf']['site_name'] = 'Pushtape Installation';
+    _drupal_maintenance_theme();
+  }
+}
+
+
+/**
+ * Task callback: shows the welcome screen.
+ */
+function install_welcome($form, &$form_state, &$install_state) {
+  drupal_set_title(st('Welcome...'));
+
+  $message = '<p>' . st('After installing this distribution, you will have a fully featured music website for your band
+                         complete with tracks, albums, news, photos, and show listings.') . '</p>';
+
+  $form = array();
+  $form['welcome_message'] = array(
+    '#markup' => $message,
+  );
+  $form['actions'] = array(
+    '#type' => 'actions',
+  );
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => st('Begin installation'),
+    '#weight' => 10,
+  );
+  return $form;
+}
+
+function install_welcome_submit($form, &$form_state) {
+  global $install_state;
+
+  $install_state['parameters']['welcome'] = 'done';
+  $install_state['parameters']['locale'] = 'en';
+}
