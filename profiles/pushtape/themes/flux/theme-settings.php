@@ -62,7 +62,7 @@ function flux_form_system_theme_settings_alter(&$form, &$form_state) {
       '#type' => 'file', 
       '#title' => t('Upload new photo'), 
       '#maxlength' => 40,
-      '#description' => t("Use this field to upload a new image."),
+      '#description' => t("Use this field to upload a new image. Recommended size is 1024x768 or larger."),
       '#suffix' => $cover_photo_path ? theme('image_style', array('style_name' => 'medium', 'path' => $cover_photo_path)) : null,       
     );
     

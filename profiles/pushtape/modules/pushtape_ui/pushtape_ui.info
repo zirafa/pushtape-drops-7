@@ -1,6 +1,5 @@
 core = "7.x"
-dependencies[] = "pushtape_discography"
-description = "A music publishing platform. Easily publish albums or single tracks."
+description = "A helper module for the Pushtape distribution. Provides workflow enhancements and UI improvements."
 name = "Pushtape UI"
 package = "Pushtape"
 project = "pushtape_ui"
@@ -17,9 +16,9 @@ project = "pushtape_ui"
 datestamp = "1343047835"
 
 
-; Information added by drupal.org packaging script on 2013-01-28
-version = "7.x-1.0-alpha2"
+; Information added by drupal.org packaging script on 2013-03-22
+version = "7.x-1.0-alpha3"
 core = "7.x"
 project = "pushtape_ui"
-datestamp = "1359369826"
+datestamp = "1363937130"
 

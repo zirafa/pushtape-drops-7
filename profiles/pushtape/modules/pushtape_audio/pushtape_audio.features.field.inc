@@ -48,10 +48,21 @@ function pushtape_audio_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
-          'weight' => '-5',
+          'module' => 'soundmanager2',
+          'settings' => array(
+            'amplifier' => 0,
+            'audio_type' => 'default',
+            'diameter' => '190',
+            'eq' => 0,
+            'inline' => 0,
+            'pause' => 'pause',
+            'stream' => FALSE,
+            'text' => 'title',
+            'visualization' => 1,
+            'waveform' => 0,
+          ),
+          'type' => 'soundmanager2_ui360',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',

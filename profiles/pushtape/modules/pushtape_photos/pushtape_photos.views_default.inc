@@ -41,7 +41,7 @@ function pushtape_photos_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'No Photos yet';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No photos yet. Create a <a href="node/add/photoset">photoset!</a>';
+  $handler->display->display_options['empty']['area']['content'] = 'No photos yet. Create a <a href="?q=node/add/photoset">photoset!</a>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';

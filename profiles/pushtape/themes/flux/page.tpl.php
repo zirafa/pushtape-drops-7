@@ -15,9 +15,6 @@
       <a href="#navigation" class="element-invisible element-focusable"><?php print t('Skip to navigation'); ?></a>
     <?php endif; ?>
   </div>
-  <?php if ($cover_image): ?>
-    <div class="cover-image"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><img width="980" src="<?php print url($cover_image) ?>" /></a></div>
-  <?php endif; ?>
   
   <div class="container-inner">
     <header id="header" role="banner" class="clearfix">

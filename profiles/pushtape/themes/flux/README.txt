@@ -1,39 +1,76 @@
-Framework 3.x for Drupal 7
-Created by André Griffin
-http://drupal.org/project/framework
 
-Framework is a blank canvas for theme developers. 
-Use Framework as a user friendly starting point to help facilitate your theme development. 
-Build site themes without feeling like you have to reinvent the wheel or remove unnecessary code every time.
+Flux is a spacious, style neutral theme that is easily branded with your custom
+logo and artwork. It is the default theme that ships with the Pushtape music
+distribution.
+See: http://drupal.org/project/pushtape
 
-Framework 3 is intended to be used with the "Seven" administration theme included with Drupal 7.
+This theme is built off of the minimal Framework theme to include button styles,
+fluid width % columns, and a single mobile friendly media query.
+See: http://www.drupal.org/project/framework
 
-Framework is actively developed and supported on my own time. If you would like to say thanks, please consider donating via:
-https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=1532730
+Note that this theme is intended to be as barebones as possible. By design, things
+like LESS/SASS, JS libraries, CSS grids and other bells and whistles are excluded.
+It is recommended you use the Omega theme if you'd like more configuration options for your theme.
+See: http://www.drupal.org/project/omega
 
-Development sites:
-http://d7.andregriffin.com
-http://d6.andregriffin.com
+
+--  This theme has a couple of unique features:
+  * A large background image that covers the entire background
+  * Button styles
+  * A single media query for small screens
+  * Fluid width % sidebars  
+
+-- Background Image
+  * Navigate to admin/appearance
+  * Click settings for the Flux theme.
+  * Toggle Display should be checked for "Cover Photo"
+  * Scroll down to "Cover photo image settings", uncheck "Use the default cover photo"
+  * Upload a new photo. Recommended 1024 x 768 or larger.
+
+-- Button Styles
+  * A universal .button class is used  and applied to many elements to improve interaction on touch devices.
+
+-- Media Queries
+  * By default with no media queries, the theme is fluid width.
+  * There is a break point for a minimum and maximum width.
+     @media screen and (min-width:980px)
+     @media screen and (max-width:760px)
+     
+-- Fluid width sidebars
+  Sidebars and main regions widths are calculated proportionally to the
+  #container width using percentage widths and margins. It is recommended
+  you set #container widths using media queries.
+  
+  DEFAULT VALUES:
+  
+  SB1 = Sidebar First width = 18%
+  SB2 = Sidebar Second width = 18%
+  G = Gutter between main column and sidebars = 2% 
+
+  If you change any of the above default values, you should update the other
+  properties that depend on these values to avoid breaking the layout. The
+  formula are provided next to each relevant CSS property.
+  
+  Example:
+  
+  /* 3 columns */
+  body.two-sidebars #main {
+    float: left;
+    margin: 0 0 0 20%; /* SB1 + G */ 
+    padding: 0;
+    width: 59.97%; /* 99.97 - (SB1 + G) - (SB2 + G) */
+  }
+
 
 -------
-USAGE
-
-Install to sites/all/themes
-
-To fully convert Framework to your own custom theme, it is encouraged that you: 
- - COPY the 'framework' directory within sites/all/themes/ and rename it as 'yourthemename' 
- - Change the filename and contents of the .info file accordingly and remove all 'packing script' info at the end of the file
- - Use find/replace in template.php to replace 'framework' with 'yourthemename' 
- - Upload and enable the theme
- - Modify as needed
-
-To create a sub-theme based on Framework, see: http://drupal.org/node/225125
+Cover photo source by Eirik Solheim :: http://www.flickr.com/photos/eirikso/3077614089/
+License: http://creativecommons.org/licenses/by-sa/2.0/
 
 -------
 SUPPORT
 
 If you have questions or problems, check the issue list before submitting a new issue: 
-http://drupal.org/project/issues/framework
+http://drupal.org/project/issues/flux
 
 For general support, please refer to:
 http://drupal.org/support

@@ -40,7 +40,7 @@ function pushtape_discography_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'No releases yet';
-  $handler->display->display_options['empty']['area']['content'] = 'No albums yet. Add a <a href="node/add/track">new track!</a>';
+  $handler->display->display_options['empty']['area']['content'] = 'No albums yet. Add a <a href="?q=node/add/track">new track!</a>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Artwork */
   $handler->display->display_options['fields']['field_artwork']['id'] = 'field_artwork';
@@ -156,7 +156,7 @@ function pushtape_discography_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'No releases yet';
-  $handler->display->display_options['empty']['area']['content'] = 'No releases yet. Add a <a href="node/add/track">new track!</a>';
+  $handler->display->display_options['empty']['area']['content'] = 'No releases yet. Add a <a href="?q=node/add/track">new track!</a>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Artwork */
   $handler->display->display_options['fields']['field_artwork']['id'] = 'field_artwork';
@@ -284,11 +284,34 @@ function pushtape_discography_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['type'] = 'ol';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'field_audio' => 'field_audio',
+    'title' => 'title',
+    'field_artist' => 'field_artist',
+  );
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_tracklist_node']['id'] = 'reverse_field_tracklist_node';
   $handler->display->display_options['relationships']['reverse_field_tracklist_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_tracklist_node']['field'] = 'reverse_field_tracklist_node';
   $handler->display->display_options['relationships']['reverse_field_tracklist_node']['required'] = TRUE;
+  /* Field: Content: Audio */
+  $handler->display->display_options['fields']['field_audio']['id'] = 'field_audio';
+  $handler->display->display_options['fields']['field_audio']['table'] = 'field_data_field_audio';
+  $handler->display->display_options['fields']['field_audio']['field'] = 'field_audio';
+  $handler->display->display_options['fields']['field_audio']['label'] = '';
+  $handler->display->display_options['fields']['field_audio']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_audio']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_audio']['type'] = 'soundmanager2_ui360';
+  $handler->display->display_options['fields']['field_audio']['settings'] = array(
+    'pause' => 'pause',
+    'inline' => 0,
+    'visualization' => 0,
+    'waveform' => 0,
+    'eq' => 0,
+    'amplifier' => 0,
+    'diameter' => '50',
+    'text' => 'title',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -297,6 +320,13 @@ function pushtape_discography_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Artist */
+  $handler->display->display_options['fields']['field_artist']['id'] = 'field_artist';
+  $handler->display->display_options['fields']['field_artist']['table'] = 'field_data_field_artist';
+  $handler->display->display_options['fields']['field_artist']['field'] = 'field_artist';
+  $handler->display->display_options['fields']['field_artist']['label'] = '';
+  $handler->display->display_options['fields']['field_artist']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_artist']['type'] = 'taxonomy_term_reference_plain';
   /* Sort criterion: Content: Tracklist (field_tracklist:delta) */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
   $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_tracklist';
@@ -353,7 +383,7 @@ function pushtape_discography_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'No releases yet';
-  $handler->display->display_options['empty']['area']['content'] = 'No releases yet. Add a <a href="node/add/track">new track!</a>';
+  $handler->display->display_options['empty']['area']['content'] = 'No releases yet. Add a <a href="?q=node/add/track">new track!</a>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Artwork */
   $handler->display->display_options['fields']['field_artwork']['id'] = 'field_artwork';

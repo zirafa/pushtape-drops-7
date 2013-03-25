@@ -3,9 +3,10 @@ description = Feature package that creates album and track content types and vie
 core = 7.x
 package = Pushtape
 php = 5.2.4
-version = 7.x-1.0-alpha1
+version = 7.x-1.0-alpha2
 project = pushtape_discography
 dependencies[] = block
+dependencies[] = colorbox
 dependencies[] = date
 dependencies[] = date_api
 dependencies[] = date_popup
@@ -21,7 +22,7 @@ dependencies[] = pathauto
 dependencies[] = pushtape_ui
 dependencies[] = taxonomy
 dependencies[] = views
-datestamp = 1356838150
+datestamp = 1360461444
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[field][] = node-album-body
@@ -55,9 +56,9 @@ features[views_view][] = releases
 features[views_view][] = tracklist
 features[views_view][] = tracks
 
-; Information added by drupal.org packaging script on 2013-01-28
-version = "7.x-1.0-alpha2"
+; Information added by drupal.org packaging script on 2013-03-22
+version = "7.x-1.0-alpha3"
 core = "7.x"
 project = "pushtape_discography"
-datestamp = "1359370111"
+datestamp = "1363936828"
 

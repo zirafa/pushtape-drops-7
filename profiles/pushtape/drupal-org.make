@@ -8,7 +8,7 @@
 
 ; The version of Drupal the profile is built for. You must include both a
 ; major and a minor release - just specifying 6.x won't work
-core = 7.19
+core = 7.21
 api = 2
 
 ; OPTIONAL ATTRIBUTES
@@ -38,26 +38,29 @@ projects[pathauto] = 1.2
 projects[entityreference] = 1.0
 projects[entity] = 1.0
 projects[ctools] = 1.2
-projects[token] = 1.4
-projects[views] = 3.5
+projects[token] = 1.5
+projects[views] = 3.6
 ;Events
 projects[date] = 2.6
-projects[link] = 1.0
+projects[link] = 1.1
 ;Photos
-projects[colorbox] = 2.2
-projects[libraries] = 2.0
+projects[colorbox] = 2.3
+projects[libraries] = 2.1
+;Audio
+projects[soundmanager2] = 2.0-beta1
+
 
 ;Distribution
-projects[pushtape_ui] = 1.0-alpha2
-projects[pushtape_discography] = 1.0-alpha2
-projects[pushtape_admin] = 1.0-alpha2
-projects[pushtape_news] = 1.0-alpha2
-projects[pushtape_events] = 1.0-alpha2
-projects[pushtape_photos] = 1.0-alpha2
-projects[pushtape_audio] = 1.0-alpha2
+projects[pushtape_ui] = 1.0-alpha3
+projects[pushtape_discography] = 1.0-alpha3
+projects[pushtape_admin] = 1.0-alpha3
+projects[pushtape_news] = 1.0-alpha3
+projects[pushtape_events] = 1.0-alpha3
+projects[pushtape_photos] = 1.0-alpha3
+projects[pushtape_audio] = 1.0-alpha3
 
 ;Theme
-projects[flux] = 1.0-alpha2
+projects[flux] = 1.x-dev
 
 ; To include a code library external to the Drupal project, such as
 ; jQuery UI or TinyMCE, you can include them using the 'libraries'
@@ -65,8 +68,12 @@ projects[flux] = 1.0-alpha2
 ; Note that any referenced third-party libraries *must* be listed at
 ; http://drupal.org/packaging-whitelist
 libraries[colorbox][download][type] = get
-libraries[colorbox][download][url] = http://jacklmoore.com/colorbox/colorbox.zip
+libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/tarball/master
 libraries[colorbox][destination] = libraries
+libraries[soundmanager2][download][type] = get
+libraries[soundmanager2][download][url] = https://github.com/scottschiller/SoundManager2/tarball/master
+libraries[soundmanager2][destination] = libraries
+
 
 ;@todo - Move this to the libraries directory
 ;library[profiler] = 2.0-beta1

@@ -72,7 +72,7 @@ function pushtape_events_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'No events yet';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No events yet. Create an <a href="node/add/event">event!</a>';
+  $handler->display->display_options['empty']['area']['content'] = 'No events yet. Create an <a href="?q=node/add/event">event!</a>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';

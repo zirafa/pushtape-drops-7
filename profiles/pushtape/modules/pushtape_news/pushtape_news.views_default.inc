@@ -38,7 +38,7 @@ function pushtape_news_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'No news yet.';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No news yet. Create a <a href="node/add/news">news post!</a>';
+  $handler->display->display_options['empty']['area']['content'] = 'No news yet. Create a <a href="?q=node/add/news">news post!</a>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';

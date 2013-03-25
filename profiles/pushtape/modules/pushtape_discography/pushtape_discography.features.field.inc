@@ -75,7 +75,7 @@ function pushtape_discography_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'display_summary' => 0,
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -203,12 +203,17 @@ function pushtape_discography_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'image',
+          'module' => 'colorbox',
           'settings' => array(
-            'image_link' => '',
-            'image_style' => 'artwork_medium',
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_image_style' => '',
+            'colorbox_multivalue_index' => NULL,
+            'colorbox_node_style' => 'artwork_medium',
           ),
-          'type' => 'image',
+          'type' => 'colorbox',
           'weight' => '0',
         ),
         'full' => array(
@@ -557,7 +562,7 @@ function pushtape_discography_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'pushtape_ui',
           'settings' => array(
             'view_name' => 'tracklist',
@@ -658,7 +663,7 @@ function pushtape_discography_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'display_summary' => 0,
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -872,13 +877,18 @@ function pushtape_discography_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'image',
+          'module' => 'colorbox',
           'settings' => array(
-            'image_link' => '',
-            'image_style' => 'artwork_medium',
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_image_style' => '',
+            'colorbox_multivalue_index' => NULL,
+            'colorbox_node_style' => 'artwork_medium',
           ),
-          'type' => 'image',
-          'weight' => '0',
+          'type' => 'colorbox',
+          'weight' => '1',
         ),
         'full' => array(
           'label' => 'hidden',

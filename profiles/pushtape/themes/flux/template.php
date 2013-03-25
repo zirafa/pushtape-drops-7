@@ -119,13 +119,40 @@ function flux_preprocess_page(&$vars) {
   if (theme_get_setting('toggle_cover_photo')) {
     $cover_image = theme_get_setting('cover_photo_path');
     if (theme_get_setting('default_cover_photo') == TRUE) {
-      $cover_image = path_to_theme() . '/cover.png';
+      $cover_image = path_to_theme() . '/background.jpg';
     }
+    // TODO: turn this off for admin pages
     if (is_file($cover_image)) {
       $vars['cover_image'] =  file_create_url($cover_image);
     }
+    /* Note: This is a quick and dirty way to dynamically change the background cover image.
+     * For more control over dynamic CSS, use LESS or SASS, don't extend this.
+     */
+    $dcss = format_string('html {
+      background: url(@background) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;    
+    }', array('@background' => $vars['cover_image']));
+    drupal_add_css($dcss, array('type' => 'inline', 'preprocess' => FALSE));
   }
+  /* Quick way to add google fonts.
+   * A better method: http://drupal.org/project/fontyourface
+   */
+  //drupal_add_css('http://fonts.googleapis.com/css?family=Arvo');
+
 }
+
+
+
+
+function flux_css_alter(&$css) {
+  // Remove defaults.css file.
+
+  
+}
+
 
 /**
  * Changes the search form to use the "search" input element of HTML5.

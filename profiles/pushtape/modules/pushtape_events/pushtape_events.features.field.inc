@@ -50,7 +50,7 @@ function pushtape_events_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -130,7 +130,7 @@ function pushtape_events_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',

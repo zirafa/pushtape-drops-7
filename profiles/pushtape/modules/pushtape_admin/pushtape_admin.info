@@ -37,9 +37,9 @@ features[user_permission][] = view the administration theme
 features[user_role][] = artist
 features[views_view][] = dashboard
 
-; Information added by drupal.org packaging script on 2013-01-28
-version = "7.x-1.0-alpha2"
+; Information added by drupal.org packaging script on 2013-03-22
+version = "7.x-1.0-alpha3"
 core = "7.x"
 project = "pushtape_admin"
-datestamp = "1359373122"
+datestamp = "1363937119"
 
