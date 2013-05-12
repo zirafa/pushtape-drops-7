@@ -1258,15 +1258,38 @@ body.page-node .field-name-field-photos .field-item img {
 .sm2-inline-list .ui360-vis:hover .sm2-360ui,
 .ui360-vis .sm2-360ui,
 .ui360-vis:hover .sm2-360ui {
-  background:#F1F5F7 url(images/noise.png);
-  border: solid #bdc3c7 5px;
+  /*
+  background: #F3f3f3 url(images/noise.png);
   border-radius:50%;
+  border:solid 1px #DDD;
+  */
 }
+
+.ui360-vis .sm2-360btn-default {
+  background: url("images/big-play.png") no-repeat scroll 50% 50% transparent;  
+  /*background: url("images/play-default.png") no-repeat scroll 50% 50% transparent; */
+}
+.ui360-vis .sm2-360btn-default:hover,
+.ui360-vis:hover .sm2-360btn {
+  background: url("images/big-play.png") no-repeat scroll 50% 50% transparent;
+   /*background: url("images/play-default-hover.png") no-repeat scroll 50% 50% transparent; */
+}
+
+/* Big play button*/
+.ui360-vis, .ui360-vis .sm2-360ui.sm2_paused .sm2-360btn,
+.ui360-vis .sm2-360ui.sm2_paused .sm2-360btn:hover {
+  background: url("images/big-play.png") no-repeat scroll 50% 50% transparent;  
+}
+/* Big Pause button*/
+.ui360-vis .sm2-360ui.sm2_playing .sm2-360btn:hover, .ui360-vis .sm2-360btn-playing:hover {
+  background: url("images/big-pause.png") no-repeat scroll 50% 50% transparent; 
+}
+
+
 .ui360-vis .sm2-canvas {
-  /* Negate the effect of the border width */  
-  margin-top:-5px;
-  margin-left:-5px;
+  /* Negate the effect of any border width with negative margins */
 }
+
 .sm2-inline-list .ui360-vis a,
 .ui360-vis a  {
   text-transform:uppercase;
@@ -1488,14 +1511,20 @@ body.maintenance-page #page-title {
   font-weight: bold;
 }
 .progress .bar {
-  background: #DDD;
-  border-color: #666;
+  height:35px;
+  background: #DDD url(images/noise.png);
+  border-color: #d0d0d0; /*BBB*/
+
+  border-bottom:solid #D0d0d0 1px;
+  border-right:solid #d0d0d0 1px;
+  border-width:1px;
   margin: 0 0.2em;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
 }
 .progress .filled {
+  height:35px;
   /*background: #0072b9 url(images/progress.gif);*/
 }
 
