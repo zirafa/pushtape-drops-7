@@ -26,7 +26,43 @@ function pushtape_admin_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '-50',
+  );
+  // Exported menu link: menu-pushtape:admin
+  $menu_links['menu-pushtape:admin'] = array(
+    'menu_name' => 'menu-pushtape',
+    'link_path' => 'admin',
+    'router_path' => 'admin',
+    'link_title' => 'Advanced',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-45',
+  );
+  // Exported menu link: menu-pushtape:admin/pushtape
+  $menu_links['menu-pushtape:admin/pushtape'] = array(
+    'menu_name' => 'menu-pushtape',
+    'link_path' => 'admin/pushtape',
+    'router_path' => 'admin/pushtape',
+    'link_title' => 'Dashboard',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Dashboard',
+      ),
+    ),
+    'module' => 'system',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-47',
   );
   // Exported menu link: menu-pushtape:node/add
   $menu_links['menu-pushtape:node/add'] = array(
@@ -44,7 +80,7 @@ function pushtape_admin_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-50',
+    'weight' => '-49',
   );
   // Exported menu link: menu-pushtape:node/add/track
   $menu_links['menu-pushtape:node/add/track'] = array(
@@ -62,7 +98,7 @@ function pushtape_admin_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '-48',
   );
   // Exported menu link: menu-pushtape:user
   $menu_links['menu-pushtape:user'] = array(
@@ -85,6 +121,8 @@ function pushtape_admin_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Account');
+  t('Advanced');
+  t('Dashboard');
   t('Home');
   t('New track');
   t('✚ Add');

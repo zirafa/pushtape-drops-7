@@ -3,7 +3,7 @@ description = Administration menu, views, and roles for the Pushtape distributio
 core = 7.x
 package = Pushtape
 php = 5.2.4
-version = 7.x-1.0-alpha1
+version = 7.x-1.0-beta1
 project = pushtape_admin
 dependencies[] = block
 dependencies[] = ctools
@@ -14,6 +14,8 @@ features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[menu_custom][] = menu-pushtape
 features[menu_links][] = menu-pushtape:<front>
+features[menu_links][] = menu-pushtape:admin
+features[menu_links][] = menu-pushtape:admin/pushtape
 features[menu_links][] = menu-pushtape:node/add
 features[menu_links][] = menu-pushtape:node/add/track
 features[menu_links][] = menu-pushtape:user
@@ -37,9 +39,9 @@ features[user_permission][] = view the administration theme
 features[user_role][] = artist
 features[views_view][] = dashboard
 
-; Information added by drupal.org packaging script on 2013-03-22
-version = "7.x-1.0-alpha3"
+; Information added by drupal.org packaging script on 2013-05-19
+version = "7.x-1.0-beta1"
 core = "7.x"
 project = "pushtape_admin"
-datestamp = "1363937119"
+datestamp = "1368958816"
 

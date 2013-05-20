@@ -36,7 +36,7 @@ api = 2
 projects[features] = 1.0
 projects[pathauto] = 1.2
 projects[entityreference] = 1.0
-projects[entity] = 1.0
+projects[entity] = 1.1
 projects[ctools] = 1.3
 projects[token] = 1.5
 projects[views] = 3.7
@@ -51,16 +51,15 @@ projects[soundmanager2] = 2.0-beta1
 
 
 ;Distribution
-projects[pushtape_ui] = 1.0-alpha3
-projects[pushtape_discography] = 1.0-alpha3
-projects[pushtape_admin] = 1.0-alpha3
-projects[pushtape_news] = 1.0-alpha3
-projects[pushtape_events] = 1.0-alpha3
-projects[pushtape_photos] = 1.0-alpha3
-projects[pushtape_audio] = 1.0-alpha3
-
+projects[pushtape_ui] = 1.0-beta1
+projects[pushtape_discography] = 1.0-beta1
+projects[pushtape_admin] = 1.0-beta1
+projects[pushtape_news] = 1.0-beta1
+projects[pushtape_events] = 1.0-beta1
+projects[pushtape_photos] = 1.0-beta1
+projects[pushtape_audio] = 1.0-beta1
 ;Theme
-projects[flux] = 1.0-alpha4
+projects[flux] = 1.0-beta1
 
 ; To include a code library external to the Drupal project, such as
 ; jQuery UI or TinyMCE, you can include them using the 'libraries'

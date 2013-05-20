@@ -16,9 +16,9 @@ project = "pushtape_ui"
 datestamp = "1343047835"
 
 
-; Information added by drupal.org packaging script on 2013-03-22
-version = "7.x-1.0-alpha3"
+; Information added by drupal.org packaging script on 2013-05-19
+version = "7.x-1.0-beta1"
 core = "7.x"
 project = "pushtape_ui"
-datestamp = "1363937130"
+datestamp = "1368959120"
 

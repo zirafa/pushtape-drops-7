@@ -81,7 +81,7 @@
 						<li><a href="doc/#smdefaults">Global Sound Defaults</a></li>
 						<li><a href="doc/#api">SoundManager Core API</a></li>
 						<li><a href="doc/#smsoundmethods">Sound Object (SMSound) API</a></li>
-						<li><a href="doc/generated/script/soundmanager2.html">Generated Documentation</a></li>
+						<li><a href="doc/generated/soundmanager2.html">Generated Documentation</a></li>
 					</ul>
 				</li>
 				<li>
@@ -95,7 +95,8 @@
 					<a href="doc/technotes/">Technical Notes</a>
 					<ul>
 						<li><a href="doc/technotes/#requirements">System Requirements</a></li>
-						<li><a href="doc/technotes/#serving-audio">Serving To Clients</a></li>
+						<li><a href="doc/technotes/#serving-audio">Serving To HTML5 + Flash Clients</a></li>
+						<li><a href="doc/technotes/#client-requests">How Clients Download Audio</a></li>
 						<li><a href="doc/technotes/#mobile-device-limitations">Mobile Device Limitations</a></li>
 						<li><a href="doc/technotes/#debug-output">Debug + Console Output</a></li>
 					</ul>
@@ -378,14 +379,14 @@
 
 <pre class="block"><code>&lt;script src="soundmanager2.js"&gt;&lt;/script&gt;
 &lt;script&gt;
-soundManager.setup({
+<a href="doc/#soundmanager-setup" title="soundManager.setup() documentation" onclick="checkDomain()">soundManager.setup</a>({
   <span><span>// where to find flash audio SWFs, as needed</span></span>
   url: '<span>/path/to/swf-files/</span>',
   <span><span>// optional: prefer HTML5 over Flash for MP3/MP4
   // <a href="doc/#soundmanager-preferflash" title="soundManager.preferFlash documentation" onclick="checkDomain()">preferFlash</a>: false,</span></span>
   onready: function() {
     <span><span>// SM2 is ready to play audio!</span></span>
-  })
+  }
 });
 &lt;/script&gt;</code></pre>
 
@@ -412,13 +413,12 @@ soundManager.setup({
 							<h4>Creating and playing a sound object</h4>
 
 <pre class="block"><code><span><span>// create "mySound"...</span></span>
-soundManager.createSound({
-  id: '<span>mySound</span>',
+var mySound = <a href="doc/#soundmanager-createsound" title="soundManager.createSound() documentation" onclick="checkDomain()">soundManager.createSound</a>({
   url: '<span>/path/to/an.mp3</span>'
 });
 
 <span><span>// ...and play it</span></span>
-soundManager.play('<span>mySound</span>');
+mySound.play();
 </code></pre>
 
 					<p>Additional options and events can be specified when loading and playing sounds. For more examples of playback features, see <a href="demo/api/" class="cta">API Demos</a>.</p>
@@ -495,9 +495,6 @@ soundManager.play('<span>mySound</span>');
 									</li>
 									<li>
 										<a id="pitchfork" href="http://www.pitchfork.com/" title="Pitchfork"><span>Pitchfork</span></a>
-									</li>
-									<li>
-										<a id="opera" href="http://www.opera.com/" title="Opera Software ASA (Media Player component)"><span>Opera Software ASA</span></a>
 									</li>
 									<li>
 										<a id="eight-tracks" href="http://8tracks.com/" title="8tracks"><span>8tracks</span></a>
