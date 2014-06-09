@@ -8,7 +8,7 @@
 
 ; The version of Drupal the profile is built for. You must include both a
 ; major and a minor release - just specifying 6.x won't work
-core = 7.26
+core = 7.28
 api = 2
 
 ; OPTIONAL ATTRIBUTES
@@ -36,15 +36,15 @@ api = 2
 projects[features] = 1.0
 projects[pathauto] = 1.2
 projects[entityreference] = 1.1
-projects[entity] = 1.3
+projects[entity] = 1.5
 projects[ctools] = 1.4
 projects[token] = 1.5
-projects[views] = 3.7
+projects[views] = 3.8
 ;Events
 projects[date] = 2.7
 projects[link] = 1.2
 ;Photos
-projects[colorbox] = 2.5
+projects[colorbox] = 2.6
 projects[libraries] = 2.2
 ;Audio
 projects[soundmanager2] = 2.0-beta1
