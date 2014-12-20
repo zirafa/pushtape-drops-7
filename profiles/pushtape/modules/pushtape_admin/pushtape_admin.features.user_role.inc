@@ -13,7 +13,7 @@ function pushtape_admin_user_default_roles() {
   // Exported role: artist.
   $roles['artist'] = array(
     'name' => 'artist',
-    'weight' => '3',
+    'weight' => 3,
   );
 
   return $roles;

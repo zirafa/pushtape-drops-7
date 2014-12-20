@@ -2,8 +2,7 @@ name = Pushtape Admin
 description = Administration menu, views, and roles for the Pushtape distribution.
 core = 7.x
 package = Pushtape
-php = 5.2.4
-version = 7.x-1.0-beta1
+version = 7.x-1.x-dev
 project = pushtape_admin
 dependencies[] = block
 dependencies[] = ctools
@@ -11,14 +10,14 @@ dependencies[] = features
 dependencies[] = menu
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[menu_custom][] = menu-pushtape
-features[menu_links][] = menu-pushtape:<front>
-features[menu_links][] = menu-pushtape:admin
-features[menu_links][] = menu-pushtape:admin/pushtape
-features[menu_links][] = menu-pushtape:node/add
-features[menu_links][] = menu-pushtape:node/add/track
-features[menu_links][] = menu-pushtape:user
+features[menu_links][] = menu-pushtape_-add:node/add
+features[menu_links][] = menu-pushtape_account:user
+features[menu_links][] = menu-pushtape_advanced:admin
+features[menu_links][] = menu-pushtape_dashboard:admin/pushtape
+features[menu_links][] = menu-pushtape_home:<front>
+features[menu_links][] = menu-pushtape_new-track:node/add/track
 features[user_permission][] = access administration pages
 features[user_permission][] = access content
 features[user_permission][] = access content overview
@@ -39,9 +38,9 @@ features[user_permission][] = view the administration theme
 features[user_role][] = artist
 features[views_view][] = dashboard
 
-; Information added by drupal.org packaging script on 2013-05-19
-version = "7.x-1.0-beta1"
+; Information added by Drupal.org packaging script on 2014-11-20
+version = "7.x-1.0-beta2"
 core = "7.x"
 project = "pushtape_admin"
-datestamp = "1368958816"
+datestamp = "1416483271"
 

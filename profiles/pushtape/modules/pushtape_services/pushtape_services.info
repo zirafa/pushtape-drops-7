@@ -1,0 +1,18 @@
+core = "7.x"
+description = "A module that provides services for the Pushtape distribution."
+name = "Pushtape Services"
+package = "Pushtape"
+version = "7.x-1.x"
+
+dependencies[] = colorbox
+dependencies[] = pushtape_player
+dependencies[] = pushtape_discography
+
+
+
+; Information added by Drupal.org packaging script on 2014-12-11
+version = "7.x-1.0-beta1"
+core = "7.x"
+project = "pushtape_services"
+datestamp = "1418281683"
+

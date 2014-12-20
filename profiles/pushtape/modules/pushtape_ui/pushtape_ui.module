@@ -62,7 +62,6 @@ function pushtape_ui_form_alter(&$form, &$form_state, $form_id) {
       $form['field_album'][LANGUAGE_NONE]['#options']['_none'] = t('- New album -');
       $form['field_album']['#states'] = array('visible' => array(':input[name="field_album_checkbox"]' => array('checked' => TRUE)));
 
-
       // Create a new form element to enable new album creation
       $form['new_album'] = array(
         '#title' => 'Name',
@@ -197,7 +196,6 @@ function pushtape_ui_track_node_form_submit($form, &$form_state) {
   }
 }
 
-
 /**
  * Custom submit handler for track node form.
  */
@@ -209,7 +207,6 @@ function pushtape_ui_album_node_form_submit($form, &$form_state) {
  * Implements hook_menu().
  */
 function pushtape_ui_menu() {
-
   $items['user/%user/logout'] = array(
     'title' => 'Log out', 
     'access callback' => 'user_is_logged_in', 
@@ -217,7 +214,6 @@ function pushtape_ui_menu() {
     'weight' => 10, 
     'type' => MENU_LOCAL_TASK,    
   );
-  
   return $items;
 }
 
@@ -229,18 +225,15 @@ function pushtape_user_logout() {
   $_GET['destination'] = 'user';  
 }
 
-
 /**
   * Implements hook_menu_alter()
   * Remember to clear the menu cache after adding/editing this function.
   */
 function pushtape_ui_menu_alter(&$items) {
-
   // Add a delete tab to nodes
   $items['node/%node']['type'] = MENU_CALLBACK;
   unset($items['node/%node/delete']['context']);
 }
-
 
 /**
  * Implements hook_theme()
@@ -253,17 +246,9 @@ function pushtape_ui_theme() {
   );
 }
 
-
-  /**
-   *  Modify default nodereference multiple list output for albums to
-   *  only allow sorting.
-    * @todo This feels fragile, is there a better way to sort and store
-    * track order?
-  */
-
 /**
- * Override of theme_field_multiple_value_form()
- * TODO: Avoid these kind of workarounds/hacks.
+ * Override of theme_field_multiple_value_form() to only allow sorting for multiple reference field.
+ * @@TODO: This seems fragile, is there a better way to sort and store track order?
 */
 function theme_pushtape_ui_field_multiple_value_form($variables) {
   $element = $variables['element'];
@@ -335,9 +320,7 @@ function theme_pushtape_ui_field_multiple_value_form($variables) {
     }
   }
   return $output;
-
 }
-
 
 /**
  * Implements hook_node_view().
@@ -354,9 +337,9 @@ function pushtape_ui_preprocess_node(&$vars) {
 /**
  * Implements hook_node_load().
  */
-
 function pushtape_ui_node_load($nodes, $types) {
-  /** If a track leaves certain fields empty, use its album to fill in those
+  /**
+   * If a track leaves certain fields empty, use its album to fill in those
    * fields. Examples: Artwork, Artist, Release Date.
    * @todo Figure out how to do this at the entity/field api level for display.
    * For now a pushtape_ui_override flag will be set to show when this happens
@@ -386,7 +369,6 @@ function pushtape_ui_node_load($nodes, $types) {
     }
   }
 }
-
 
 /**
  * Find shared fields between album and track nodes
@@ -475,7 +457,6 @@ function pushtape_ui_field_formatter_settings_summary($field, $instance, $view_m
   return $summary;
 }
 
-
 /**
  * Implements hook_field_formatter_view()
  */
@@ -506,7 +487,6 @@ function pushtape_ui_field_formatter_view($entity_type, $entity, $field, $instan
   }
   return $element;
 }
-
 
 /**
  *  Code borrowed from _entityreference_autocomplete_validate
@@ -560,4 +540,3 @@ function pushtape_ui_date_formats() {
     ),
   );
 }
-

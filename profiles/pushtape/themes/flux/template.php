@@ -113,8 +113,16 @@ function flux_process_block(&$variables, $hook) {
 }
 
 
-
+/**
+ * Implements hook_preprocess_page
+ */
 function flux_preprocess_page(&$vars) {
+  
+  // Load genericons from library
+  if (module_exists('libraries') && $genericons_path = libraries_get_path('genericons')) {
+   drupal_add_css($genericons_path . '/genericons/genericons.css');
+  }
+  
   $vars['cover_image']  = NULL;
   if (theme_get_setting('toggle_cover_photo')) {
     $cover_image = theme_get_setting('cover_photo_path');
@@ -202,4 +210,13 @@ function flux_preprocess_field(&$variables, $hook){
             }       
     }
   }
+}
+/**
+ * Override feed icons to include JSPF and embed links.
+ */
+function flux_feed_icon($variables) {
+  $text = t('Subscribe to !feed-title', array('!feed-title' => $variables['title']));
+  $icon = '<span class="genericon genericon-feed"></span>';
+  $rss = l($icon, $variables['url'], array('html' => TRUE, 'attributes' => array('class' => array('feed-icon'), 'title' => $text)));
+  return $rss;
 }

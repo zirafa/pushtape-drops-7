@@ -95,6 +95,7 @@
     <footer id="footer" role="contentinfo" class="clearfix">
       <?php print render($page['footer']) ?>
       <?php print $feed_icons ?>
+      <?php if (!empty($pushtape_icons)): ?><?php print $pushtape_icons ?><?php endif; ?>
     </footer> <!-- /#footer -->
   </div> <!-- /#container-inner -->
 </div> <!-- /#container -->

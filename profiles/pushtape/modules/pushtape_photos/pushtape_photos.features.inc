@@ -7,8 +7,8 @@
 /**
  * Implements hook_views_api().
  */
-function pushtape_photos_views_api() {
-  return array("version" => "3.0");
+function pushtape_photos_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }
 
 /**
@@ -31,13 +31,14 @@ function pushtape_photos_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '900',
+          'width' => 900,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'photo_large',
   );
 
   // Exported image style: photo_thumb.
@@ -54,12 +55,13 @@ function pushtape_photos_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '205',
-          'height' => '205',
+          'width' => 205,
+          'height' => 205,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'photo_thumb',
   );
 
   // Exported image style: photo_tiny.
@@ -76,12 +78,13 @@ function pushtape_photos_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '100',
-          'height' => '100',
+          'width' => 100,
+          'height' => 100,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'photo_tiny',
   );
 
   return $styles;
@@ -101,5 +104,6 @@ function pushtape_photos_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

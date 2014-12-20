@@ -19,11 +19,7 @@ function flux_form_system_theme_settings_alter(&$form, &$form_state) {
   );
   
   // Default path for image
-  $cover_photo_path = theme_get_setting('cover_photo_path');
-  if (file_uri_scheme($cover_photo_path) == 'public') {
-    $cover_photo_path = file_uri_target($cover_photo_path);
-  }
-  
+
   $form['theme_settings']['toggle_cover_photo']['#type'] = 'checkbox';
   $form['theme_settings']['toggle_cover_photo']['#title'] = t('Cover Photo');
   $form['theme_settings']['toggle_cover_photo']['#default_value'] = theme_get_setting('toggle_cover_photo');
@@ -63,12 +59,12 @@ function flux_form_system_theme_settings_alter(&$form, &$form_state) {
       '#title' => t('Upload new photo'), 
       '#maxlength' => 40,
       '#description' => t("Use this field to upload a new image. Recommended size is 1024x768 or larger."),
-      '#suffix' => $cover_photo_path ? theme('image_style', array('style_name' => 'medium', 'path' => $cover_photo_path)) : null,       
+      '#suffix' => theme_get_setting('cover_photo_path') ? theme('image_style', array('style_name' => 'medium', 'path' => theme_get_setting('cover_photo_path'))) : null,       
     );
     
     // Attach custom submit handler to the form
-    $form['#submit'] = array('flux_theme_settings_submit');
-    $form['#validate'] = array('flux_theme_settings_validate');
+    $form['#submit'][] = 'flux_theme_settings_submit';
+    $form['#validate'][] = 'flux_theme_settings_validate';
 }
 
 
@@ -77,21 +73,20 @@ function flux_form_system_theme_settings_alter(&$form, &$form_state) {
  */
 function flux_theme_settings_submit($form, &$form_state) {
 
-  $values = $form_state['values'];
-  
   $previous = theme_get_setting('cover_photo_path');
   
   // If the user uploaded a new cover_photo or favicon, save it to a permanent location
   // and use it in place of the default theme-provided file.
 
-  if ($file = $values['cover_photo_upload']) {
-    unset($values['cover_photo_upload']);
+  if (!empty($form_state['values']['cover_photo_upload'])) {
+    $file = $form_state['values']['cover_photo_upload'];
+    unset($form_state['values']['cover_photo_upload']);
     $filename = file_unmanaged_copy($file->uri, NULL, FILE_EXISTS_REPLACE);
-    $values['default_cover_photo'] = 0;
-    $values['cover_photo_path'] = $filename;
-    $values['toggle_cover_photo'] = 1;
+    $form_state['values']['default_cover_photo'] = 0;
+    $form_state['values']['cover_photo_path'] = $filename;
+    $form_state['values']['toggle_cover_photo'] = 1;
     // Remove previous file uploaded
-    $current = $values['cover_photo_path'];
+    $current = $form_state['values']['cover_photo_path'];
     if (($previous != $current) && is_file($previous)) {
       // Delete previous file
       drupal_unlink($previous);
@@ -100,16 +95,10 @@ function flux_theme_settings_submit($form, &$form_state) {
   
   // If the user entered a path relative to the system files directory for
   // a cover_photo or favicon, store a public:// URI so the theme system can handle it.
-  if (!empty($values['cover_photo_path'])) {
-    $values['cover_photo_path'] = flux_system_theme_settings_validate_path($values['cover_photo_path']);
+  if (!empty($form_state['values']['cover_photo_path'])) {
+    $form_state['values']['cover_photo_path'] = flux_system_theme_settings_validate_path($form_state['values']['cover_photo_path']);
   }
 
-
-  $key = 'theme_flux_settings';//$values['var'];
-  // Exclude unnecessary elements before saving.
-  unset($values['var'], $values['submit'], $values['reset'], $values['form_id'], $values['op'], $values['form_build_id'], $values['form_token']);
-  variable_set($key, $values);
-  cache_clear_all(); 
 }
 
 /**

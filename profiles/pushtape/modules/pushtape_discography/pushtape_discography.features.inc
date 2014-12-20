@@ -7,8 +7,8 @@
 /**
  * Implements hook_views_api().
  */
-function pushtape_discography_views_api() {
-  return array("version" => "3.0");
+function pushtape_discography_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }
 
 /**
@@ -31,12 +31,13 @@ function pushtape_discography_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '1600',
-          'height' => '1200',
+          'width' => 1600,
+          'height' => 1200,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'artwork_huge',
   );
 
   // Exported image style: artwork_large.
@@ -53,13 +54,14 @@ function pushtape_discography_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '550',
+          'width' => 550,
           'height' => '',
           'upscale' => 1,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'artwork_large',
   );
 
   // Exported image style: artwork_medium.
@@ -76,13 +78,14 @@ function pushtape_discography_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '450',
+          'width' => 450,
           'height' => '',
           'upscale' => 1,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
+    'label' => 'artwork_medium',
   );
 
   // Exported image style: artwork_small.
@@ -99,12 +102,13 @@ function pushtape_discography_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '225',
-          'height' => '225',
+          'width' => 225,
+          'height' => 225,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'artwork_small',
   );
 
   // Exported image style: artwork_thumbnail.
@@ -121,12 +125,13 @@ function pushtape_discography_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '100',
-          'height' => '100',
+          'width' => 100,
+          'height' => 100,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'artwork_thumbnail',
   );
 
   return $styles;
@@ -154,5 +159,6 @@ function pushtape_discography_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

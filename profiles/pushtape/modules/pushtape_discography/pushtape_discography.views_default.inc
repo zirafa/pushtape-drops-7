@@ -301,16 +301,9 @@ function pushtape_discography_views_default_views() {
   $handler->display->display_options['fields']['field_audio']['label'] = '';
   $handler->display->display_options['fields']['field_audio']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_audio']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_audio']['type'] = 'soundmanager2_ui360';
+  $handler->display->display_options['fields']['field_audio']['type'] = 'pushtape_player';
   $handler->display->display_options['fields']['field_audio']['settings'] = array(
-    'pause' => 'pause',
-    'inline' => 0,
-    'visualization' => 0,
-    'waveform' => 0,
-    'eq' => 0,
-    'amplifier' => 0,
-    'diameter' => '50',
-    'text' => 'title',
+    'text' => 'empty',
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
