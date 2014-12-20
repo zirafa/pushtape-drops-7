@@ -236,7 +236,7 @@ function pushtape_services_embed_code($node) {
   }
   $path = drupal_get_path('module', 'pushtape_services');
   $src = url('node/' . $node->nid . '/embed', array('absolute' => TRUE));
-  $markup = theme('pushtape_services_embed_code', $src);
+  $markup = theme('pushtape_services_embed_code', array('src' => $src));
 
   $title = t('Embed code');
   $classes = array('embed-code-form');  
@@ -261,9 +261,9 @@ function pushtape_services_preprocess_page(&$vars) {
    * that contains service links for Embed code and JSPF.
    */
   $vars['pushtape_icons'] = '';
-  
+
   // Only relevant for album and track node types.
-  if (!empty($vars['node']) && ($vars['node']->type == 'album' || $vars['node']->type == 'track')) {
+  if (!empty($vars['node']) && ($vars['node']->type == 'album' || $vars['node']->type == 'track') && !(path_is_admin(current_path()))) {
     // Load the necessary js file for Colorbox activation.
     if (module_exists('colorbox') && drupal_get_library('colorbox') && !variable_get('colorbox_inline', 0)) {
       drupal_add_js(drupal_get_path('module', 'colorbox') . '/js/colorbox_inline.js');
@@ -306,10 +306,10 @@ function pushtape_services_jspf_link($nid) {
 function pushtape_services_theme() {
   return array(
     'pushtape_services_html' => array(
-      'vars' => array(),
+      'variables' => array(),
     ),
     'pushtape_services_embed_code' => array(
-      'src' => '',
+      'variables' => array(),
     ),
   );
 }
@@ -317,18 +317,18 @@ function pushtape_services_theme() {
 /**
  * Wrapper for html output.
  *
- * @param array $vars
+ * @param array $variables
  *   Variables for display
  *   
  * @return
  *   Raw HTML output bypassing the theme
  */
-function theme_pushtape_services_html($vars) {
+function theme_pushtape_services_html($variables) {
   // Variable parameters
-  $title = !empty($vars['title']) ? $vars['title'] : '';
-  $classes = !empty($vars['classes']) ? $vars['classes'] : array();
-  $markup = !empty($vars['markup']) ? $vars['markup'] : '';
-  $iframe = !empty($vars['iframe']) ? 'iframe' : 'not-iframe';
+  $title = !empty($variables['title']) ? $variables['title'] : '';
+  $classes = !empty($variables['classes']) ? $variables['classes'] : array();
+  $markup = !empty($variables['markup']) ? $variables['markup'] : '';
+  $iframe = !empty($variables['iframe']) ? 'iframe' : 'not-iframe';
   
   // This is borrowed from template_preprocess_html
   global $language;
@@ -352,13 +352,14 @@ function theme_pushtape_services_html($vars) {
 /**
  * Theme function for returning embed code popup markup
  *
- * @param $src
- *   iFrame URL for src attribute
+ * @param array $variables
+ *   $variables['src'] is iFrame URL for src attribute
  *   
  * @return
  *   Output for Embed popup
  */
-function theme_pushtape_services_embed_code($src) {
+function theme_pushtape_services_embed_code($variables) {
+  $src = !empty($variables['src']) ? $variables['src'] : '';
   $path = drupal_get_path('module', 'pushtape_services');
   drupal_add_css($path . '/css/pushtape-services-embed.css', array('group' => CSS_THEME, 'weight' => 99));
   drupal_add_js($path . '/js/pushtape-services-embed.js');
