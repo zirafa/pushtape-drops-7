@@ -25,7 +25,7 @@ function pushtape_form_install_configure_form_alter(&$form, $form_state) {
 
   // Set "admin" as the default username.
   $form['admin_account']['account']['name']['#default_value'] = 'admin';
-  $form['admin_account']['account']['name']['#disabled'] = TRUE;
+  //$form['admin_account']['account']['name']['#disabled'] = TRUE;
 
   // Hide Update Notifications.
   $form['update_notifications']['#access'] = FALSE;

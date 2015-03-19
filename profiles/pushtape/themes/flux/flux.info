@@ -32,9 +32,9 @@ settings[toggle_cover_photo] = 1
 settings[toggle_logo] = 0
 
 
-; Information added by Drupal.org packaging script on 2014-12-11
-version = "7.x-1.0-beta5"
+; Information added by Drupal.org packaging script on 2015-01-21
+version = "7.x-1.0-beta7"
 core = "7.x"
 project = "flux"
-datestamp = "1418281685"
+datestamp = "1421831591"
 

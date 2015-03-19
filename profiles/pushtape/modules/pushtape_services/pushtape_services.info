@@ -10,9 +10,9 @@ dependencies[] = pushtape_discography
 
 
 
-; Information added by Drupal.org packaging script on 2014-12-14
-version = "7.x-1.0-beta2"
+; Information added by Drupal.org packaging script on 2015-01-21
+version = "7.x-1.0-beta3"
 core = "7.x"
 project = "pushtape_services"
-datestamp = "1418550543"
+datestamp = "1421831883"
 

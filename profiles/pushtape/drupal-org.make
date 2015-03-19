@@ -8,7 +8,7 @@
 
 ; The version of Drupal the profile is built for. You must include both a
 ; major and a minor release - just specifying 6.x won't work
-core = 7.34
+core = 7.35
 api = 2
 
 ; OPTIONAL ATTRIBUTES
@@ -33,13 +33,13 @@ api = 2
 ; you would use:
 
 ;Contrib
-projects[features] = 2.2
+projects[features] = 2.4
 projects[pathauto] = 1.2
 projects[entityreference] = 1.1
-projects[entity] = 1.5
-projects[ctools] = 1.5
-projects[token] = 1.5
-projects[views] = 3.8
+projects[entity] = 1.6
+projects[ctools] = 1.7
+projects[token] = 1.6
+projects[views] = 3.10
 ; Events
 projects[date] = 2.8
 projects[link] = 1.3
@@ -52,7 +52,7 @@ projects[libraries] = 2.2
 ;Distribution Custom
 projects[pushtape_ui] = 1.0-beta2
 projects[pushtape_player] = 1.0-beta2
-projects[pushtape_services] = 1.0-beta2
+projects[pushtape_services] = 1.0-beta3
 ; Distribution Features
 projects[pushtape_discography] = 1.0-beta2
 projects[pushtape_admin] = 1.0-beta2
@@ -62,7 +62,7 @@ projects[pushtape_page] = 1.0-beta1
 projects[pushtape_photos] = 1.0-beta2
 projects[pushtape_audio] = 1.0-beta3
 ; Distribution Theme
-projects[flux] = 1.0-beta5
+projects[flux] = 1.0-beta7
 
 ; To include a code library external to the Drupal project, such as
 ; jQuery UI or TinyMCE, you can include them using the 'libraries'

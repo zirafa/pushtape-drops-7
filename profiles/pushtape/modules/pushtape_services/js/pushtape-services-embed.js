@@ -39,11 +39,16 @@
           var val = $this.val();
           previewDiv.append(val);
 
-          // We append ?preview because of a weird bug where browsers don't seem to like loading an iframe src tag that matches the current window.location   
+          // We append ?iframe=1 because of a weird bug where browsers don't seem to like loading an iframe src tag that matches the current window.location   
           previewContainer.html(val);
           if (firstTime) {
-            var src = previewContainer.find('iframe').attr('src');    
-            previewContainer.find('iframe').attr('src', src + '?iframe=1');
+            var src = previewContainer.find('iframe').attr('src');
+            // Need to output ampersand if clean urls are off
+            var cleanUrl = Drupal.settings.pushtapeServices.clean_url ? '?' : '&';
+            // Workaround to output ampersand in attr
+            // http://stackoverflow.com/questions/11591174/escaping-of-attribute-values-using-jquery-attr
+            //var url = $('<div/>').html(src + cleanUrl + 'iframe=1').text(); 
+            previewContainer.find('iframe').attr('src', src + cleanUrl + 'iframe=1');
             firstTime = false;
           }
           previewContainer.find('iframe').attr('width', width);
