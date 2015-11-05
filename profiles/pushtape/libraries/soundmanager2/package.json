@@ -1,10 +1,10 @@
 {
-  "name": "SoundManager2",
-  "version": "2.97.20140901",
-  "description": "A JavaScript Sound API supporting MP3, MPEG4 and HTML5 audio + (experimental) RTMP, providing reliable cross-browser/platform audio control in as little as 10 KB.",
+  "name": "soundmanager2",
+  "version": "2.97.20150601a",
+  "description": "A JavaScript Sound API supporting MP3, MPEG4 and HTML5 audio + RTMP, providing reliable cross-browser/platform audio control in as little as 12 KB.",
   "main": "script/soundmanager2.js",
   "directories": {
-    "doc": "doc"
+    "lib": "./script"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
