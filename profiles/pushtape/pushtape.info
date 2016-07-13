@@ -19,6 +19,7 @@ dependencies[] = taxonomy
 dependencies[] = field_ui
 dependencies[] = file
 dependencies[] = rdf
+dependencies[] = update
 
 ;Contrib
 dependencies[] = features
@@ -52,9 +53,9 @@ dependencies[] = pushtape_services
 files[] = pushtape.profile
 
 
-; Information added by Drupal.org packaging script on 2015-11-05
-version = "7.x-1.0-beta24"
+; Information added by Drupal.org packaging script on 2016-07-13
+version = "7.x-1.0-beta26"
 core = "7.x"
 project = "pushtape"
-datestamp = "1446696864"
+datestamp = "1468374870"
 
