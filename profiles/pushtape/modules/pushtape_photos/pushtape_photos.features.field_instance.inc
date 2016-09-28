@@ -10,7 +10,7 @@
 function pushtape_photos_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-photoset-field_photos'
+  // Exported field_instance: 'node-photoset-field_photos'.
   $field_instances['node-photoset-field_photos'] = array(
     'bundle' => 'photoset',
     'deleted' => 0,

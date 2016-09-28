@@ -21,6 +21,5 @@ function pushtape_admin_menu_default_menu_custom() {
   t('Menu for Pushtape tasks.');
   t('Pushtape');
 
-
   return $menus;
 }

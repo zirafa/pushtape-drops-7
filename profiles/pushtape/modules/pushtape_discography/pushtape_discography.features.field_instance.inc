@@ -10,7 +10,7 @@
 function pushtape_discography_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-album-body'
+  // Exported field_instance: 'node-album-body'.
   $field_instances['node-album-body'] = array(
     'bundle' => 'album',
     'default_value' => NULL,
@@ -63,7 +63,7 @@ function pushtape_discography_field_default_field_instances() {
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-album-field_artist'
+  // Exported field_instance: 'node-album-field_artist'.
   $field_instances['node-album-field_artist'] = array(
     'bundle' => 'album',
     'default_value' => NULL,
@@ -103,7 +103,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-album-field_artwork'
+  // Exported field_instance: 'node-album-field_artwork'.
   $field_instances['node-album-field_artwork'] = array(
     'bundle' => 'album',
     'deleted' => 0,
@@ -169,7 +169,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-album-field_links'
+  // Exported field_instance: 'node-album-field_links'.
   $field_instances['node-album-field_links'] = array(
     'bundle' => 'album',
     'default_value' => NULL,
@@ -195,6 +195,7 @@ function pushtape_discography_field_default_field_instances() {
     'label' => 'Links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -207,6 +208,7 @@ function pushtape_discography_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -222,7 +224,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-album-field_release_date'
+  // Exported field_instance: 'node-album-field_release_date'.
   $field_instances['node-album-field_release_date'] = array(
     'bundle' => 'album',
     'deleted' => 0,
@@ -237,6 +239,7 @@ function pushtape_discography_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 5,
@@ -275,7 +278,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-album-field_tags'
+  // Exported field_instance: 'node-album-field_tags'.
   $field_instances['node-album-field_tags'] = array(
     'bundle' => 'album',
     'default_value' => NULL,
@@ -322,7 +325,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-album-field_tracklist'
+  // Exported field_instance: 'node-album-field_tracklist'.
   $field_instances['node-album-field_tracklist'] = array(
     'bundle' => 'album',
     'default_value' => NULL,
@@ -365,7 +368,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-body'
+  // Exported field_instance: 'node-track-body'.
   $field_instances['node-track-body'] = array(
     'bundle' => 'track',
     'default_value' => NULL,
@@ -418,7 +421,7 @@ function pushtape_discography_field_default_field_instances() {
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-track-field_album'
+  // Exported field_instance: 'node-track-field_album'.
   $field_instances['node-track-field_album'] = array(
     'bundle' => 'track',
     'default_value' => NULL,
@@ -457,7 +460,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_artist'
+  // Exported field_instance: 'node-track-field_artist'.
   $field_instances['node-track-field_artist'] = array(
     'bundle' => 'track',
     'default_value' => NULL,
@@ -497,7 +500,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_artwork'
+  // Exported field_instance: 'node-track-field_artwork'.
   $field_instances['node-track-field_artwork'] = array(
     'bundle' => 'track',
     'deleted' => 0,
@@ -563,7 +566,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_audio'
+  // Exported field_instance: 'node-track-field_audio'.
   $field_instances['node-track-field_audio'] = array(
     'bundle' => 'track',
     'deleted' => 0,
@@ -607,7 +610,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_credits'
+  // Exported field_instance: 'node-track-field_credits'.
   $field_instances['node-track-field_credits'] = array(
     'bundle' => 'track',
     'default_value' => NULL,
@@ -654,7 +657,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_license'
+  // Exported field_instance: 'node-track-field_license'.
   $field_instances['node-track-field_license'] = array(
     'bundle' => 'track',
     'default_value' => array(
@@ -702,7 +705,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_links'
+  // Exported field_instance: 'node-track-field_links'.
   $field_instances['node-track-field_links'] = array(
     'bundle' => 'track',
     'default_value' => NULL,
@@ -728,6 +731,7 @@ function pushtape_discography_field_default_field_instances() {
     'label' => 'Links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -740,6 +744,7 @@ function pushtape_discography_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -755,7 +760,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_lyrics'
+  // Exported field_instance: 'node-track-field_lyrics'.
   $field_instances['node-track-field_lyrics'] = array(
     'bundle' => 'track',
     'default_value' => NULL,
@@ -802,7 +807,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_release_date'
+  // Exported field_instance: 'node-track-field_release_date'.
   $field_instances['node-track-field_release_date'] = array(
     'bundle' => 'track',
     'deleted' => 0,
@@ -817,6 +822,7 @@ function pushtape_discography_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 9,
@@ -855,7 +861,7 @@ function pushtape_discography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-track-field_tags'
+  // Exported field_instance: 'node-track-field_tags'.
   $field_instances['node-track-field_tags'] = array(
     'bundle' => 'track',
     'default_value' => NULL,

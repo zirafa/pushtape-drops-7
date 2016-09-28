@@ -4,7 +4,16 @@
 http://www.drupal.org/project/pushtape
 
 ## Build pushtape from scratch using drush make: http://drush.ws/#make
+
 To manually build the Pushtape distribution in the current directory, in the terminal type:
-drush make build-pushtape.make
+    
+    drush make build-pushtape.make
+
+To install the distribution:
+
+    drush site-install pushtape
+
+
+
 
 

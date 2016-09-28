@@ -53,9 +53,9 @@ dependencies[] = pushtape_services
 files[] = pushtape.profile
 
 
-; Information added by Drupal.org packaging script on 2016-07-14
-version = "7.x-1.0-beta27"
+; Information added by Drupal.org packaging script on 2016-09-28
+version = "7.x-1.0"
 core = "7.x"
 project = "pushtape"
-datestamp = "1468527941"
+datestamp = "1475088857"
 

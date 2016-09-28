@@ -109,7 +109,7 @@ function pushtape_events_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Notes */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -280,7 +280,7 @@ function pushtape_events_views_default_views() {
   $handler->display->display_options['fields']['field_links']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_links']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_links']['separator'] = ' · ';
-  /* Field: Content: Notes */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';

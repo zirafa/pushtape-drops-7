@@ -29,14 +29,28 @@ function pushtape_services_menu() {
     'page callback' => 'pushtape_services_embed_code',
     'type' => MENU_CALLBACK,    
   );
+  $items['node/%node/html'] = array(
+    'title' => 'HTML', 
+    'access arguments' => array('access jspf'),
+    'page callback' => 'pushtape_services_html',
+    'page arguments' => array(1),
+    'type' => MENU_CALLBACK,    
+  );  
+  $items['pushtape/services/cassette'] = array(
+    'title' => 'Cassette', 
+    'access arguments' => array('access jspf'),
+    'page arguments' => array(1),
+    'page callback' => 'pushtape_services_cassette',
+    'type' => MENU_CALLBACK,    
+  );  
   return $items;
 }
 
 function pushtape_services_permission() {
   return array(
     'access jspf' => array(
-      'title' => t('Access JSPF Endpoints'),
-      'description' => t('Users with this permission will be able to view and access JSON playlist formats for albums and track endpoints node/%nid/jspf'),
+      'title' => t('Access Cassette, JSPF, HTML Endpoints'),
+      'description' => t('Users with this permission will be able to view and access JSON playlist formats for albums and track endpoints (node/%nid/jspf), html endpoints (node/%nid/html) and cassette.json (pushtape/services/cassette)'),
     ),
   );
 }
@@ -118,7 +132,150 @@ function pushtape_services_jspf($node) {
     $jspf['playlist']['track'] = $tracks;
   }
 
-  drupal_json_output($jspf);
+  $callback = !empty($_REQUEST['callback']) ? check_plain($_REQUEST['callback']) : '';
+  // If its a jsonp callback request
+  if (isset($callback) && $callback != '') {
+    $json_response = drupal_json_encode($jspf);
+    header("Content-type: text/javascript");
+    echo $callback ."(". $json_response .");";
+  }
+  else {
+    drupal_json_output($jspf);
+  }    
+}
+
+/**
+ * Return HTML for static page
+ *
+ * @param $node
+ *   Node object
+ * @return
+ *   HTML
+ */
+function pushtape_services_html($node) {
+  // Return if not an album or track node
+  if (!user_access('access jspf') || empty($node) || !in_array($node->type, array('page', 'track', 'album'))) {
+    return;
+  }
+  $node = node_load($node->nid);
+  $output = '';
+  if ($node->type == 'page') {
+    $output .= '<h2>' . $node->title . '</h2>';
+    $field = field_get_items('node', $node, 'body');
+    $field_value = field_view_value('node', $node, 'body', $field[0]);
+    $output .= render($field_value);
+    
+  }
+  if ($node->type == 'track' || $node->type == 'album') {
+    $output .= _pushtape_services_get_field($node, 'body');    
+  }
+  
+  $callback = !empty($_REQUEST['callback']) ? check_plain($_REQUEST['callback']) : '';
+  // If its a jsonp callback request
+  if (isset($callback) && $callback != '') {
+    $json_response = json_encode(array('response' => $output));
+    header("Content-type: text/javascript");
+    print $callback . '(' . $json_response . ');' ;
+  }
+  else {
+    print $output;
+  }   
+  drupal_exit();
+}
+
+
+/**
+ * Return Cassette.json
+ * See: https://github.com/zirafa/pushtape-cassette
+ *
+ * @return
+ *   Cassette JSON Object
+ */
+function pushtape_services_cassette() {
+  // Return if not an album or track node
+  if (!user_access('access jspf')) {
+    return;
+  }
+  
+  $cassette = array();
+  $cassette['settings'] = array('homePage' => 'releases', 'cleanURLs' => false);
+  $cassette['pages'] = array('releases' => "");
+
+  // Support JSONP
+  $callback = variable_get('clean_url') ? '?callback=?' : '&callback=?';
+  
+  // Grab static pages that are in main menu
+  $menu = menu_load_links('main-menu');
+  $link_paths = array();
+  foreach ($menu as $menu_item) {
+    $link_paths[] = $menu_item['link_path'];  
+  }  
+  $page_nids = db_select('node', 'n')
+     ->fields('n', array('nid', 'created'))
+     ->condition('n.status', 1)
+     ->condition('n.type', 'page')
+     ->orderBy('n.created', 'DESC')      
+     ->addTag('node_access')
+     ->execute()
+     ->fetchCol();
+  foreach ($page_nids as $page_nid) {
+    if (in_array('node/' . $page_nid, $link_paths)) {
+      $alias = drupal_get_path_alias('node/' . $page_nid);
+      $cassette['pages'][$alias] = array('format' => 'json', 'location' => url('node/' . $page_nid . '/html', array('absolute' => TRUE)) . $callback);
+    } 
+  }
+
+  // Grab all albums and tracks
+  // @TODO optimize this query, it's too general
+  $nids = db_select('node', 'n')
+     ->fields('n', array('nid', 'created'))
+     ->condition('n.status', 1)
+     ->condition(db_or()->condition('n.type', 'album')->condition('n.type', 'track'))
+     ->orderBy('n.created', 'DESC')      
+     ->addTag('node_access')
+     ->execute()
+     ->fetchCol();
+
+  // Load all nodes to be rendered.
+  $nodes = node_load_multiple($nids);
+  $releases = array();
+  $album = '';
+  foreach ($nodes as $node) {
+
+    // If track doesn't have album, it's counted as a release
+    $single = FALSE;
+    if ($node->type == 'track' && empty($node->field_album)) {
+      $single = TRUE;
+    }
+    if ($node->type == 'album' || $single) {
+      $lang = $node->language;
+      $title = t($node->title);
+      if(module_load_include('inc','pathauto','pathauto') !== FALSE) {
+       if (function_exists('pathauto_cleanstring')) {
+        $path =  pathauto_cleanstring($title);
+       }
+       else
+        $path = $node->nid;
+      }       
+      $creator = !empty($node->field_artist) ? _pushtape_services_get_field($node, 'field_artist') : '';    
+      $artwork = !empty($node->field_artwork) ?  file_create_url(image_style_url('artwork_medium', $node->field_artwork[$lang][0]['uri'])) : '';
+      $jspf = url('node/' . $node->nid . '/jspf', array('absolute' => TRUE));
+      $notes = url('node/' . $node->nid . '/html', array('absolute' => TRUE));
+      $releases[$path] = array('title' => $title, 'playlist' => $jspf . $callback, 'artwork' => $artwork, 'notes' => array('format' => 'json', 'location' => $notes . $callback));
+    }
+  }
+  $cassette['releases'] = $releases;
+  
+  $callback = !empty($_REQUEST['callback']) ? check_plain($_REQUEST['callback']) : '';
+  // If its a jsonp callback request
+  if (isset($callback) && $callback != '') {
+    $json_response = drupal_json_encode($cassette);
+    header("Content-type: text/javascript");
+    echo $callback ."(". $json_response .");";
+  }
+  else {
+    drupal_json_output($cassette);
+  }  
 }
 
 /**
@@ -262,6 +419,13 @@ function pushtape_services_embed_code($node) {
  */
 function pushtape_services_preprocess_page(&$vars) {
   
+  // Raw output is partial HTML (no HEAD, no scripts or styles, etc)
+  /*
+  if (isset($_GET['raw']) && $_GET['raw'] == 1 ) {
+    $vars['theme_hook_suggestions'] = array('pushtape_services_page_raw');
+  }
+  */
+  
   // Load genericons from library
   if (module_exists('libraries') && $genericons_path = libraries_get_path('genericons')) {
    drupal_add_css($genericons_path . '/genericons/genericons.css');
@@ -284,6 +448,19 @@ function pushtape_services_preprocess_page(&$vars) {
   }
   $path = drupal_get_path('module', 'pushtape_services');
 }
+
+/**
+ * Implements hook_preprocess_page
+ */
+/*
+function pushtape_services_preprocess_html(&$vars) {
+  if (isset($_GET['raw']) && $_GET['raw'] == 1 ) {
+    $vars['theme_hook_suggestions'] = array('pushtape_services_html_raw');
+  }
+}
+*/
+
+
 
 /**
  * Generate Colorbox Embed Link with iFrame code for a node
@@ -325,8 +502,21 @@ function pushtape_services_theme() {
     'pushtape_services_embed_code' => array(
       'variables' => array(),
     ),
+    'pushtape_services_page_raw' => array (
+      'variables' => array(),
+      'template' => 'page--raw' ,
+      'base hook' => 'page',
+      'path' => drupal_get_path('module', 'pushtape_services') . '/templates',
+    ),
+    'pushtape_services_html_raw' => array (
+      'variables' => array(),
+      'template' => 'html--raw' ,
+      'base hook' => 'html',
+      'path' => drupal_get_path('module', 'pushtape_services') . '/templates',
+    ),      
   );
 }
+
 
 /**
  * Wrapper for html output.
@@ -335,7 +525,7 @@ function pushtape_services_theme() {
  *   Variables for display
  *   
  * @return
- *   Raw HTML output bypassing the theme
+ *   Barebones HTML output
  */
 function theme_pushtape_services_html($variables) {
   // Variable parameters

@@ -119,6 +119,7 @@ function _pushtape_player_doheader() {
     'playNext' => true, // stop after one sound, or play through list until end
     'autoPlay' => false, // start playing the first sound right away
     'repeatAll' => false, // repeat playlist after last track
+    'autoScan' => false, // Turn off mutation observer
     'containerClass' => (!empty($scope) && !empty($container_class)) ? $container_class : '', // Default is to scan entire page for links, if set will scan only inside containerClass
     'linkClass' => $link_class, // Default will add all audio links found. If set (i.e. pushtape-player), will only add audio links that have the class: <a class="pushtape-player" href="file.mp3"></a>
     'addControlsMarkup' => array(

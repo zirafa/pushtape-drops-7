@@ -10,7 +10,7 @@
 function pushtape_admin_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-pushtape_-add:node/add
+  // Exported menu link: menu-pushtape_-add:node/add.
   $menu_links['menu-pushtape_-add:node/add'] = array(
     'menu_name' => 'menu-pushtape',
     'link_path' => 'node/add',
@@ -30,7 +30,7 @@ function pushtape_admin_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 0,
   );
-  // Exported menu link: menu-pushtape_account:user
+  // Exported menu link: menu-pushtape_account:user.
   $menu_links['menu-pushtape_account:user'] = array(
     'menu_name' => 'menu-pushtape',
     'link_path' => 'user',
@@ -50,7 +50,7 @@ function pushtape_admin_menu_default_menu_links() {
     'weight' => -46,
     'customized' => 0,
   );
-  // Exported menu link: menu-pushtape_advanced:admin
+  // Exported menu link: menu-pushtape_advanced:admin.
   $menu_links['menu-pushtape_advanced:admin'] = array(
     'menu_name' => 'menu-pushtape',
     'link_path' => 'admin',
@@ -70,7 +70,7 @@ function pushtape_admin_menu_default_menu_links() {
     'weight' => -45,
     'customized' => 0,
   );
-  // Exported menu link: menu-pushtape_dashboard:admin/pushtape
+  // Exported menu link: menu-pushtape_dashboard:admin/pushtape.
   $menu_links['menu-pushtape_dashboard:admin/pushtape'] = array(
     'menu_name' => 'menu-pushtape',
     'link_path' => 'admin/pushtape',
@@ -90,7 +90,7 @@ function pushtape_admin_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 0,
   );
-  // Exported menu link: menu-pushtape_home:<front>
+  // Exported menu link: menu-pushtape_home:<front>.
   $menu_links['menu-pushtape_home:<front>'] = array(
     'menu_name' => 'menu-pushtape',
     'link_path' => '<front>',
@@ -110,7 +110,7 @@ function pushtape_admin_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 0,
   );
-  // Exported menu link: menu-pushtape_new-track:node/add/track
+  // Exported menu link: menu-pushtape_new-track:node/add/track.
   $menu_links['menu-pushtape_new-track:node/add/track'] = array(
     'menu_name' => 'menu-pushtape',
     'link_path' => 'node/add/track',
@@ -130,6 +130,7 @@ function pushtape_admin_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 0,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Account');
@@ -138,7 +139,6 @@ function pushtape_admin_menu_default_menu_links() {
   t('Home');
   t('New track');
   t('✚ Add');
-
 
   return $menu_links;
 }

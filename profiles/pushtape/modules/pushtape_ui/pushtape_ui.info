@@ -1,22 +1,16 @@
-core = "7.x"
-description = "A helper module for the Pushtape distribution. Provides workflow enhancements and UI improvements."
 name = "Pushtape UI"
+description = "A helper module for the Pushtape distribution. Provides workflow enhancements and UI improvements."
 package = "Pushtape"
 project = "pushtape_ui"
-version = "7.x-1.0"
+core = 7.x
+version = 7.x-1.0
 
 stylesheets[all][] = css/pushtape.css
 
-; Information added by drupal.org packaging script on 2012-07-23
-version = "7.x-1.x-dev"
+
+; Information added by Drupal.org packaging script on 2016-09-28
+version = "7.x-1.0"
 core = "7.x"
 project = "pushtape_ui"
-datestamp = "1343047835"
-
-
-; Information added by Drupal.org packaging script on 2014-12-11
-version = "7.x-1.0-beta2"
-core = "7.x"
-project = "pushtape_ui"
-datestamp = "1418282584"
+datestamp = "1475042388"
 

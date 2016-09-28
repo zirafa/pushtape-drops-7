@@ -10,14 +10,13 @@
 function pushtape_discography_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_album'
+  // Exported field_base: 'field_album'.
   $field_bases['field_album'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_album',
-    'foreign keys' => array(),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -50,21 +49,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_artist'
+  // Exported field_base: 'field_artist'.
   $field_bases['field_artist'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_artist',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -84,21 +75,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_artwork'
+  // Exported field_base: 'field_artwork'.
   $field_bases['field_artwork'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_artwork',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -114,21 +97,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_audio'
+  // Exported field_base: 'field_audio'.
   $field_bases['field_audio'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_audio',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -145,21 +120,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_credits'
+  // Exported field_base: 'field_credits'.
   $field_bases['field_credits'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_credits',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -172,14 +139,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_license'
+  // Exported field_base: 'field_license'.
   $field_bases['field_license'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_license',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -203,21 +169,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_lyrics'
+  // Exported field_base: 'field_lyrics'.
   $field_bases['field_lyrics'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_lyrics',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -230,14 +188,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_release_date'
+  // Exported field_base: 'field_release_date'.
   $field_bases['field_release_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_release_date',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -260,21 +217,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_tags'
+  // Exported field_base: 'field_tags'.
   $field_bases['field_tags'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tags',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -294,14 +243,13 @@ function pushtape_discography_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_tracklist'
+  // Exported field_base: 'field_tracklist'.
   $field_bases['field_tracklist'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tracklist',
-    'foreign keys' => array(),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
